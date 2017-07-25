@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">PlayMe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_charts">Top charts</string>
+    <string name="top_songs">Top songs</string>
+    <string name="topText">FreelanceEngine</string>
+    <string name="middleText">Forgot your password?</string>
+    <string name="bottomText">New? Be member here</string>
+    <string name="sign_up">sign up</string>
+    <string name="bottomText2">By creating an account, you agree to our Marketplace User Agreement and Privacy policy</string>
+    <string name="profileText">profile</string>
+    <string name="statisticsText">statistics</string>
+    <string name="photosText">photos</string>
+    <string name="laboratoryText">laboratory</string>
+    <string name="calendarText">calendar</string>
+    <string name="alertText">alert</string>
+    <string name="topText3">Profile</string>
+    <string name="bottomText3">Michael Galubinski</string>
+    <string name="sign_in">sign in</string>
+</resources>
