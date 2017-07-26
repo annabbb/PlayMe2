@@ -3,7 +3,9 @@ package xyz.ideeva.playme;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class HomePage extends AppCompatActivity {
+import com.example.mylibrary.FullscreenActivity;
+
+public class HomePage extends FullscreenActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

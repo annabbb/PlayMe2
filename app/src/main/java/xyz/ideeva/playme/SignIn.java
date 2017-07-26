@@ -16,6 +16,7 @@ import com.example.mylibrary.BaseAuthentication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class SignIn extends BaseAuthentication implements View.OnClickListener {
@@ -33,10 +34,13 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
 
-       // if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
-         //   finish();
-          //  startActivity(new Intent(getApplicationContext(), HomePage.class));
-        //}
+        FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
+            startActivity(new Intent(getApplicationContext(), HomePage.class));
+            finish();
+        }
 
         button = (Button) findViewById(R.id.button);
         email = (EditText) findViewById(R.id.email);
@@ -72,7 +76,7 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
                             Toast.makeText(SignIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-                        progressDialog.hide();
+                        progressDialog.dismiss();
                     }
                 });
     }
@@ -111,8 +115,10 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         }
 
         if(v == bottomText){
+            progressDialog.show();
             finish();
             startActivity(new Intent(this, SignUp.class));
+            progressDialog.dismiss();
         }
     }
 }

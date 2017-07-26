@@ -19,4 +19,10 @@
     <string name="topText3">Profile</string>
     <string name="bottomText3">Michael Galubinski</string>
     <string name="sign_in">sign in</string>
+    <string name="please_enter_your_email">Enter your email</string>
+    <string name="please_enter_your_password">Enter your password</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_confirm_password">Please confirm password</string>
 </resources>
