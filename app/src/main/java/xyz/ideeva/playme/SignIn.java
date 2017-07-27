@@ -77,7 +77,7 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
                         }
                         else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(SignIn.this, "Authentication failed.",
+                            Toast.makeText(SignIn.this, "Authentication failed",
                                     Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
