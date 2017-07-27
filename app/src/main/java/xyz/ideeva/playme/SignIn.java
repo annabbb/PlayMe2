@@ -42,6 +42,10 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
             finish();
         }
 
+        if(!isNetworkAvailable()){
+            Toast.makeText(SignUp.this, "No internet connection", Toast.LENGTH_SHORT).show();
+        }
+
         button = (Button) findViewById(R.id.button);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
@@ -99,6 +103,10 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
             valid = false;
         } else {
             password.setError(null);
+        }
+
+        if(!isNetworkAvailable()){
+            Toast.makeText(SignUp.this, "No internet connection", Toast.LENGTH_SHORT).show();
         }
 
         return valid;

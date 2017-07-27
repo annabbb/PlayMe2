@@ -45,6 +45,10 @@ public class SignUp extends BaseAuthentication implements View.OnClickListener{
 
         button.setOnClickListener(this);
 
+        if(!isNetworkAvailable()){
+            Toast.makeText(SignUp.this, "No internet connection", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void signUp(String email, String password, String name){
@@ -134,6 +138,10 @@ public class SignUp extends BaseAuthentication implements View.OnClickListener{
         if(mPassword.length() >= 6 && mPassword2.length() > 0 && !mPassword.equals(mPassword2)) {
             password2.setError("Incorrect password");
             valid = false;
+        }
+
+        if(!isNetworkAvailable()){
+            Toast.makeText(SignUp.this, "No internet connection", Toast.LENGTH_SHORT).show();
         }
 
         return valid;
