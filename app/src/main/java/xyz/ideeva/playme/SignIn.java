@@ -161,8 +161,8 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
     public void onClick(View v) {
 
         if (v == button){
-            String userEmail = email.getText().toString().trim();
-            String userPassword = password.getText().toString().trim();
+            String userEmail = email.getText().toString();
+            String userPassword = password.getText().toString();
             signIn(userEmail, userPassword);
         }
 
@@ -174,7 +174,7 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         }
 
         if(v == middleText){
-            String userEmail = email.getText().toString().trim();
+            String userEmail = email.getText().toString();
             sendPassword(userEmail);
         }
     }
