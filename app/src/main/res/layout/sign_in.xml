@@ -33,7 +33,7 @@
         app:image="@drawable/email_icon"
         app:type="textEmailAddress" />
 
-    <EditText
+    <com.example.mylibrary.EditTextWithIcon
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="44dp"
@@ -43,8 +43,9 @@
         android:layout_marginTop="3dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="@string/please_enter_your_password"
-        android:inputType="textPassword" />
+        app:image="@drawable/password_icon"
+        app:name="@string/please_enter_your_password"
+        app:type="textPassword" />
 
     <TextView
         android:id="@+id/middleText"

@@ -49,7 +49,7 @@ public class EditTextWithIcon extends RelativeLayout {
             editText.setHint(hintString);
         }
 
-        int editTextInput = InputType.TYPE_CLASS_NUMBER;
+        int editTextInput = InputType.TYPE_CLASS_PHONE;
 
         if (editTextInputType == 0) {
             editTextInput = InputType.TYPE_TEXT_VARIATION_PASSWORD;
@@ -87,5 +87,9 @@ public class EditTextWithIcon extends RelativeLayout {
     @SuppressWarnings("unused")
     public String getText() {
         return editText.getText().toString();
+    }
+
+    public void showError(String error) {
+        editText.setError(error);
     }
 }

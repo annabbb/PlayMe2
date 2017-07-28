@@ -14,6 +14,7 @@ import android.widget.Toast;
 import android.content.SharedPreferences.Editor;
 
 import com.example.mylibrary.BaseAuthentication;
+import com.example.mylibrary.EditTextWithIcon;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,10 +24,10 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignUp extends BaseAuthentication implements View.OnClickListener{
 
     private Button button;
-    private EditText email;
-    private EditText password;
-    private EditText password2;
-    private EditText name;
+    private EditTextWithIcon email;
+    private EditTextWithIcon password;
+    private EditTextWithIcon password2;
+    private EditTextWithIcon name;
     private ProgressDialog progressDialog;
 
 
@@ -36,10 +37,10 @@ public class SignUp extends BaseAuthentication implements View.OnClickListener{
         setContentView(R.layout.sign_up);
 
         button = (Button) findViewById(R.id.button);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        name = (EditText) findViewById(R.id.name);
-        password2 = (EditText) findViewById(R.id.password2);
+        email = (EditTextWithIcon) findViewById(R.id.email);
+        password = (EditTextWithIcon) findViewById(R.id.password);
+        name = (EditTextWithIcon) findViewById(R.id.name);
+        password2 = (EditTextWithIcon) findViewById(R.id.password2);
 
         progressDialog = new ProgressDialog(this);
 
@@ -97,46 +98,46 @@ public class SignUp extends BaseAuthentication implements View.OnClickListener{
 
         String mName = name.getText().toString();
         if (TextUtils.isEmpty(mName)) {
-            name.setError("Required");
+            name.showError("Required");
             valid = false;
         }
         else {
-            name.setError(null);
+            name.showError(null);
         }
 
         String mEmail = email.getText().toString();
         if (TextUtils.isEmpty(mEmail)) {
-            email.setError("Required");
+            email.showError("Required");
             valid = false;
         }
         else {
-            email.setError(null);
+            email.showError(null);
         }
 
         String mPassword = password.getText().toString();
         if (TextUtils.isEmpty(mPassword)) {
-            password.setError("Required");
+            password.showError("Required");
             valid = false;
         } else {
-            password.setError(null);
+            password.showError(null);
         }
 
         if (mPassword.length() < 6 && mPassword.length() > 0) {
-            password.setError("Minimum 6 characters");
+            password.showError("Minimum 6 characters");
             valid = false;
         }
 
         String mPassword2 = password2.getText().toString();
         if (TextUtils.isEmpty(mPassword2)) {
-            password2.setError("Required");
+            password2.showError("Required");
             valid = false;
         }
         else {
-            password2.setError(null);
+            password2.showError(null);
         }
 
         if(mPassword.length() >= 6 && mPassword2.length() > 0 && !mPassword.equals(mPassword2)) {
-            password2.setError("Incorrect password");
+            password2.showError("Incorrect password");
             valid = false;
         }
 

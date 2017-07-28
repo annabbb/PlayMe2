@@ -2,6 +2,7 @@ package xyz.ideeva.playme;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mylibrary.BaseAuthentication;
+import com.example.mylibrary.EditTextWithIcon;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,8 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignIn extends BaseAuthentication implements View.OnClickListener {
 
     private Button button;
-    private EditText email;
-    private EditText password;
+    private EditTextWithIcon email;
+    private EditTextWithIcon password;
     private TextView bottomText;
     private ProgressDialog progressDialog;
 
@@ -47,8 +49,8 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         }
 
         button = (Button) findViewById(R.id.button);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        email = (EditTextWithIcon) findViewById(R.id.email);
+        password = (EditTextWithIcon) findViewById(R.id.password);
         bottomText = (TextView) findViewById(R.id.bottomText);
 
         progressDialog = new ProgressDialog(this);
@@ -90,19 +92,19 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
 
         String mEmail = email.getText().toString();
         if (TextUtils.isEmpty(mEmail)) {
-            email.setError("Required.");
+            email.showError("Required");
             valid = false;
         }
         else {
-            email.setError(null);
+            email.showError(null);
         }
 
         String mPassword = password.getText().toString();
         if (TextUtils.isEmpty(mPassword)) {
-            password.setError("Required.");
+            password.showError("Required");
             valid = false;
         } else {
-            password.setError(null);
+            password.showError(null);
         }
 
         if(!isNetworkAvailable()){
