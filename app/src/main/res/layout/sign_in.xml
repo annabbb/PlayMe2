@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/picture" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/picture">
 
     <TextView
         android:id="@+id/topText"
@@ -16,7 +17,7 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
-    <EditText
+    <com.example.mylibrary.EditTextWithIcon
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="44dp"
@@ -28,8 +29,9 @@
         android:layout_marginTop="88dp"
         android:background="#FFFFFF"
         android:ems="10"
-        android:hint="@string/please_enter_your_email"
-        android:inputType="textEmailAddress" />
+        app:name="@string/please_enter_your_email"
+        app:image="@drawable/email_icon"
+        app:type="textEmailAddress" />
 
     <EditText
         android:id="@+id/password"

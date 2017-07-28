@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/transparent"
+    android:padding="1dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:id="@+id/user_name_edit_view"
+        tools:ignore="LabelFor,TextFields" />
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:scaleType="centerCrop"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/user_icon"
+        tools:ignore="ContentDescription" />
+
+</RelativeLayout>

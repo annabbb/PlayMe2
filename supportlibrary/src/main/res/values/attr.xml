@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="EditTextWithIcon">
+        <attr name="image" format="integer" />
+        <attr name="name" format="string" />
+        <attr name="type" format="enum">
+            <enum name="textPassword" value="0" />
+            <enum name="textEmailAddress" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>
