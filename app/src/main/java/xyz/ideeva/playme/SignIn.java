@@ -27,7 +27,9 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
     private EditTextWithIcon email;
     private EditTextWithIcon password;
     private TextView bottomText;
+    private TextView middleText;
     private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
 
 
 
@@ -36,13 +38,12 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
 
-        FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
-            startActivity(new Intent(getApplicationContext(), HomePage.class));
-            finish();
-        }
+        //if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
+           // startActivity(new Intent(getApplicationContext(), HomePage.class));
+           // finish();
+        //}
 
         if(!isNetworkAvailable()){
             Toast.makeText(SignIn.this, "No internet connection", Toast.LENGTH_SHORT).show();
@@ -52,11 +53,13 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
         email = (EditTextWithIcon) findViewById(R.id.email);
         password = (EditTextWithIcon) findViewById(R.id.password);
         bottomText = (TextView) findViewById(R.id.bottomText);
+        middleText  = (TextView) findViewById(R.id.middleText);
 
         progressDialog = new ProgressDialog(this);
 
         button.setOnClickListener(this);
         bottomText.setOnClickListener(this);
+        middleText.setOnClickListener(this);
     }
 
     private void signIn(String email, String password) {
@@ -115,6 +118,45 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
     }
 
 
+    private void sendPassword(String email) {
+        if (!validateEmail()) {
+            return;
+        }
+
+
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                            Toast.makeText(SignIn.this, "Email sent.",
+                                    Toast.LENGTH_SHORT).show();
+                        } else{
+                            Log.w(TAG, "Failed to sent email.", task.getException());
+                            Toast.makeText(SignIn.this, "Failed to sent email.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+
+    private boolean validateEmail(){
+        boolean valid = true;
+
+        String mEmail = email.getText().toString();
+        if (TextUtils.isEmpty(mEmail)) {
+            email.showError("Required");
+            valid = false;
+        }
+        else {
+            email.showError(null);
+        }
+
+        return valid;
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -130,5 +172,11 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
             startActivity(new Intent(this, SignUp.class));
             progressDialog.dismiss();
         }
+
+        if(v == middleText){
+            String userEmail = email.getText().toString().trim();
+            sendPassword(userEmail);
+        }
     }
+
 }
