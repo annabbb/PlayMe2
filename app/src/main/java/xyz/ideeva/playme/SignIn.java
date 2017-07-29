@@ -40,10 +40,10 @@ public class SignIn extends BaseAuthentication implements View.OnClickListener {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
-           // startActivity(new Intent(getApplicationContext(), HomePage.class));
-           // finish();
-        //}
+        if(firebaseAuth.getCurrentUser() != null){      //if the user is signed in
+            startActivity(new Intent(getApplicationContext(), HomePage.class));
+            finish();
+        }
 
         if(!isNetworkAvailable()){
             Toast.makeText(SignIn.this, "No internet connection", Toast.LENGTH_SHORT).show();
