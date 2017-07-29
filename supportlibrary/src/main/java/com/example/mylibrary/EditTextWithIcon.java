@@ -49,15 +49,14 @@ public class EditTextWithIcon extends RelativeLayout {
             editText.setHint(hintString);
         }
 
-        int editTextInput = InputType.TYPE_CLASS_PHONE;
-
         if (editTextInputType == 0) {
-            editTextInput = InputType.TYPE_TEXT_VARIATION_PASSWORD;
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         } else if (editTextInputType == 1) {
-            editTextInput = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS;
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        } else if (editTextInputType == 2) {
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         }
 
-        editText.setInputType(editTextInput);
     }
 
     private void initializeViews(Context context) {
